@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LexiAI — Sign Up / Login</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+
+
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splashScreen">
+    <div class="splash-overlay"></div>
+    <div class="splash-content">
+      <img src="logo.png" alt="LexiAI Logo" class="splash-logo" />
+      <h1>LexiAI Initializing...</h1>
+    </div>
+  </div>
+
+  <!-- Background Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <div class="auth-card glass">
+      <!-- Logo Section -->
+      <div class="logo">
+        <div class="logo-glow">
+          <img src="logo.png" alt="LexiAI Logo" />
+        </div>
+        <h1>LexiAI</h1>
+        <p class="tagline">Multilingual NLP Intelligence Platform</p>
+      </div>
+
+      <div class="form-content">
+        <!-- Sign Up -->
+        <form id="signupForm" class="form active">
+          <h2>Create Your Account</h2>
+          <p>Join LexiAI to access multilingual NLP intelligence.</p>
+          <input type="text" id="fullname" name="name" placeholder="Full Name" required />
+          <input type="email" id="email" name="email" placeholder="Email" required />
+          <input type="password" id="password" name="password" placeholder="Password" required />
+          <button type="submit" class="btn ripple-btn">Sign Up</button>
+          <p class="switch-text">Already have an account? <a href="#" id="switchToLogin">Log in</a></p>
+        </form>
+
+        <!-- Login -->
+        <form id="loginForm" class="form hidden">
+          <h2>Welcome Back</h2>
+          <p>Access your LexiAI dashboard.</p>
+          <input type="email" id="loginEmail" placeholder="Email" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button type="submit" class="btn ripple-btn">Login</button>
+          <p class="switch-text">Don’t have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="particles.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

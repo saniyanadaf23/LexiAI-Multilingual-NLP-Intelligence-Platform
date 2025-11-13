@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  color: #e2e8f0;
+  position: relative;
+}
+
+/* ===== Animated Gradient Background ===== */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, #001f1d, #003633, #004d49, #002b28);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Particle Canvas (neural network) ===== */
+#particleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ===== AI Aura Glow Behind Card ===== */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  animation: auraPulse 6s infinite ease-in-out;
+  z-index: -1;
+  filter: blur(80px);
+}
+
+@keyframes auraPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
+}
+
+/* ===== Layout ===== */
+.container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ===== Glassmorphism Card ===== */
+.auth-card {
+  position: relative;
+  background: rgba(15, 30, 35, 0.7);
+  backdrop-filter: blur(25px);
+  border-radius: 18px;
+  padding: 2.8rem 3rem;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Logo & Aura ===== */
+.logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.logo-glow {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.35), transparent 70%);
+  filter: blur(30px);
+  border-radius: 50%;
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+@keyframes pulseGlow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
+}
+
+
+.logo img {
+  width: 70px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #20c997;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+.tagline {
+  font-size: 0.95rem;
+  color: #a0f0dc;
+  margin-bottom: 1.8rem;
+}
+
+/* ===== Form ===== */
+.form { display: none; flex-direction: column; align-items: center; }
+.form.active { display: flex; }
+.form.hidden { display: none; }
+
+.form h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2ee6b8;
+  margin-bottom: 0.3rem;
+}
+.form p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Inputs ===== */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid #14b8a6;
+  box-shadow: 0 0 8px rgba(20, 184, 166, 0.5);
+}
+
+/* ===== Ripple Buttons ===== */
+.btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #14b8a6, #10b981);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+}
+
+.ripple-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.5s ease, height 0.5s ease, opacity 1s ease;
+  opacity: 0;
+}
+.ripple-btn:hover::after {
+  width: 300%;
+  height: 300%;
+  opacity: 0;
+}
+
+
+
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #9be8d3;
+  opacity: 0.8;
+  text-align: center;
+}
+/* ===== Cinematic Neural Splash Screen ===== */
+#splashScreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* transparent to show particle grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  animation: fadeOutSplash 1.6s ease 1.6s forwards;
+}
+
+/* Teal light overlay (soft AI aura behind logo) */
+.splash-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(20, 184, 166, 0.25), rgba(0,0,0,0.7));
+  animation: glowPulse 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Splash content */
+.splash-content {
+  position: relative;
+  text-align: center;
+  color: #14b8a6;
+  z-index: 2;
+  animation: fadeInSplash 1.2s ease;
+}
+
+.splash-logo {
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(45, 212, 191, 0.8));
+  animation: pulseSplash 1.6s infinite ease-in-out;
+}
+
+#splashScreen h1 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: #a7f3d0;
+  margin-top: 18px;
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeOutSplash {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeInSplash {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseSplash {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+}
+
+
